@@ -1,20 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import jwtDecode from "jwt-decode";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
-import Title from "./comps/Title";
-import UploadForm from "./comps/UploadForm";
-import ImageGrid from "./comps/ImageGrid";
-import Modal from "./comps/Modal";
+import Login from "./comps/Login";
+import Register from "./comps/Register";
+import UserProfile from "./comps/UserProfile";
+import ResetPass from "./comps/ResetPass";
+import ProtectedRoute from "./comps/ProtectedRoute";
 
 function App() {
-  const [selectedImg, setSelectedImg] = useState(null);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    try {
+      const jwt = localStorage.getItem("token");
+      //decode jwt
+      const user = jwtDecode(jwt);
+      setUser(user);
+      console.log(user);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
   return (
     <div className="App">
-      <Title></Title>
-      <UploadForm></UploadForm>
-      <ImageGrid setSelectedImg={setSelectedImg} />
-      {selectedImg && (
-        <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
-      )}
+      <BrowserRouter>
+        {" "}
+        <Switch>
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/reset-password" component={ResetPass} />
+          <ProtectedRoute path="/" component={UserProfile} />
+        </Switch>
+      </BrowserRouter>{" "}
     </div>
   );
 }

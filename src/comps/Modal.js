@@ -14,6 +14,8 @@ const Modal = ({ selectedImg, setSelectedImg }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >
+      <p>Share your day</p>
+
       <motion.img
         src={selectedImg}
         alt="enlarged pic"
