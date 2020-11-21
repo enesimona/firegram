@@ -24,8 +24,8 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <div className="App">
         {" "}
         <Switch>
           <Route path="/login" component={Login} />
@@ -33,8 +33,8 @@ function App() {
           <Route path="/reset-password" component={ResetPass} />
           <ProtectedRoute path="/" component={UserProfile} />
         </Switch>
-      </BrowserRouter>{" "}
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
