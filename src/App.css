@@ -25,7 +25,6 @@ body {
 .App {
   height: 100%;
   width: 100%;
-  max-width: 960px;
   margin: 0 auto;
 }
 
@@ -35,9 +34,11 @@ body {
 
 .title h1 {
   color: #efb6b2;
-  font-size: 2.2rem;
+  font-size: 3rem;
   letter-spacing: 2px;
   font-weight: normal;
+  padding-top: 10px;
+  margin-left: 20px;
 }
 .title h2,
 .title p {
@@ -95,6 +96,8 @@ label:hover {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 .img-wrap {
   overflow: hidden;
@@ -149,6 +152,10 @@ img {
   color: inherit;
   padding: 0;
   cursor: pointer;
+}
+
+.profile-edit-btn {
+  background: #efb6b2 !important;
 }
 
 .btn:focus {
